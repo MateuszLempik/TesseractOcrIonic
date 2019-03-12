@@ -1,0 +1,7 @@
+{
+  "name": "ocrText",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
