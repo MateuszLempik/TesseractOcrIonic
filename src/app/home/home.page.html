@@ -8,10 +8,23 @@
 
 <ion-content padding>
 
-  <button ion-button full (click)="selectSource()">Select Image</button>
-  <button ion-button full (click)="recognizeImage()">Recognize Image</button>
+  <ion-button expand="block" (click)="selectSource()">Select Image</ion-button>
 
   <img [src]="selectedImage" *ngIf="selectedImage">
+
+  <ion-list [class.hide]="!checkStatus">
+    <ion-label>Select language</ion-label>
+    <ion-item>
+      <ion-label>Language</ion-label>
+      <ion-select placeholder="Choose language" (ionChange)="optionsFn($event)">
+        <ion-select-option value="eng">English</ion-select-option>
+        <ion-select-option value="pol">Polish</ion-select-option>
+        <ion-select-option value="deu">German</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button [class.hide]="!checkStatusButton" expand="block" (click)="recognizeImage()">Recognize Image</ion-button>
 
   <ion-card *ngIf="imageText">
       <ion-card-header>
