@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, LoadingController } from '@ionic/angular';
+import { NavController, ActionSheetController, LoadingController, AlertController } from '@ionic/angular';
 import { NgProgress } from 'ngx-progressbar';
 import { Camera, PictureSourceType } from '@ionic-native/camera/ngx';
 import * as Tesseract from 'tesseract.js'
@@ -20,7 +20,7 @@ export class HomePage {
   checkStatus: boolean;
   checkStatusButton: boolean;
 
-  constructor(public navCtrl: NavController, private http: HTTP, private camera: Camera, private actionSheetCtrl: ActionSheetController, public progress: NgProgress) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private http: HTTP, private camera: Camera, private actionSheetCtrl: ActionSheetController, public progress: NgProgress) {
   }
 
   async selectSource() {    
@@ -69,13 +69,26 @@ export class HomePage {
     });
   }
 
+  async presentAlert(error) {
+    const alertController = document.querySelector('ion-alert-controller');
+    await alertController.componentOnReady();
+  
+    const alert = await alertController.create({
+      header: 'Warning !',
+      subHeader: 'Check your Internet connection !',
+      message: error,
+      buttons: ['OK']
+    });
+    return await alert.present();
+  }
+
   recognizeImage() {
     this.http.setDataSerializer("json");
-    this.http.post('http://192.168.1.111:3000/', {imgDat: this.img, language: this.lang
+    this.http.post('http://192.168.1.112:3000/', {imgDat: this.img, language: this.lang
     },{'Content-Type': 'application/json'}).then(response => {
       this.imageText = response.data;
     }).catch(error => {
-      console.log(error)
+      this.presentAlert(error.error);
     });
   }
 
