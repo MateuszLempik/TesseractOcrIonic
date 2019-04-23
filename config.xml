@@ -86,6 +86,7 @@
     <allow-navigation href="http://172.19.76.209:8100" sessionid="ad2e9c3d" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.6" />
+    <allow-navigation href="http://192.168.1.104:8100" sessionid="fe959f18" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.4" />
 </widget>

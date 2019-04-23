@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, ActionSheetController, LoadingController, AlertController } from '@ionic/angular';
 import { NgProgress } from 'ngx-progressbar';
 import { Camera, PictureSourceType } from '@ionic-native/camera/ngx';
-import * as Tesseract from 'tesseract.js'
-import { Buffer } from 'buffer';
 import { HTTP } from '@ionic-native/http/ngx';
 
 @Component({
@@ -15,6 +13,7 @@ export class HomePage {
 
   selectedImage: string;
   imageText: string;
+  recognitionTime: number;
   img : string;
   lang: string;
   checkStatus: boolean;
@@ -83,13 +82,18 @@ export class HomePage {
   }
 
   recognizeImage() {
+    const start = new Date().getTime();
     this.http.setDataSerializer("json");
-    this.http.post('http://192.168.1.112:3000/', {imgDat: this.img, language: this.lang
+    this.http.post('http://192.168.1.104:3000/', {imgDat: this.img, language: this.lang
     },{'Content-Type': 'application/json'}).then(response => {
-      this.imageText = response.data;
+      if(response.data){
+        const end = new Date().getTime();
+        console.log(end - start);
+        this.imageText = response.data;
+        this.recognitionTime = end - start;
+      }
     }).catch(error => {
       this.presentAlert(error.error);
     });
   }
-
 }
