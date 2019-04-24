@@ -36,5 +36,6 @@
       <ion-card-content>
         Recognition Time: {{ recognitionTime }} ms
       </ion-card-content>
-    </ion-card>
-  </ion-content>
+  </ion-card>
+  <ion-button [class.hide]="!checkCopyButton" expand="block" (click)="copyToClipboard()">Copy Text</ion-button>
+</ion-content>

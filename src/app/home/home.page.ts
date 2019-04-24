@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, LoadingController, AlertController } from '@ionic/angular';
-import { NgProgress } from 'ngx-progressbar';
+import { NavController, ActionSheetController, AlertController } from '@ionic/angular';
 import { Camera, PictureSourceType } from '@ionic-native/camera/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +18,9 @@ export class HomePage {
   lang: string;
   checkStatus: boolean;
   checkStatusButton: boolean;
+  checkCopyButton: boolean;
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private http: HTTP, private camera: Camera, private actionSheetCtrl: ActionSheetController, public progress: NgProgress) {
+  constructor(public navCtrl: NavController, private http: HTTP, private camera: Camera, private actionSheetCtrl: ActionSheetController, private clipboard: Clipboard) {
   }
 
   async selectSource() {    
@@ -81,6 +82,19 @@ export class HomePage {
     return await alert.present();
   }
 
+  async showInformation() {
+    const alertController = document.querySelector('ion-alert-controller');
+    await alertController.componentOnReady();
+  
+    const alert = await alertController.create({
+      header: 'Info',
+      subHeader: 'Text sucessfully copied !',
+      message: null,
+      buttons: ['OK']
+    });
+    return await alert.present();
+  }
+
   recognizeImage() {
     const start = new Date().getTime();
     this.http.setDataSerializer("json");
@@ -91,9 +105,15 @@ export class HomePage {
         console.log(end - start);
         this.imageText = response.data;
         this.recognitionTime = end - start;
+        this.checkCopyButton = true;
       }
     }).catch(error => {
       this.presentAlert(error.error);
     });
+  }
+
+  copyToClipboard(){
+    this.clipboard.copy(this.imageText);
+    this.showInformation();
   }
 }

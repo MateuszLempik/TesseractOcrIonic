@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Camera } from '@ionic-native/camera/ngx';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { NgProgressModule } from 'ngx-progressbar';
 
 @NgModule({
@@ -19,7 +20,7 @@ import { NgProgressModule } from 'ngx-progressbar';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Camera
+    Camera, Clipboard
   ],
   bootstrap: [AppComponent]
 })
