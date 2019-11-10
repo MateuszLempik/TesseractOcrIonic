@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, AlertController } from '@ionic/angular';
+import { NavController, ActionSheetController, LoadingController } from '@ionic/angular';
 import { Camera, PictureSourceType } from '@ionic-native/camera/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
@@ -20,7 +20,7 @@ export class HomePage {
   checkStatusButton: boolean;
   checkCopyButton: boolean;
 
-  constructor(public navCtrl: NavController, private http: HTTP, private camera: Camera, private actionSheetCtrl: ActionSheetController, private clipboard: Clipboard) {
+  constructor(public navCtrl: NavController, private http: HTTP, private camera: Camera, private actionSheetCtrl: ActionSheetController, private clipboard: Clipboard, private loadingController: LoadingController) {
   }
 
   async selectSource() {    
@@ -98,9 +98,15 @@ export class HomePage {
   recognizeImage() {
     const start = new Date().getTime();
     this.http.setDataSerializer("json");
-    this.http.post('http://192.168.1.104:3000/', {imgDat: this.img, language: this.lang
+
+    this.loadingController.create({
+      message: 'Please wait...'
+    }).then(loading => loading.present());
+
+    this.http.post('https://polar-harbor-38401.herokuapp.com/', {imgDat: this.img, language: this.lang
     },{'Content-Type': 'application/json'}).then(response => {
       if(response.data){
+        this.loadingController.dismiss();
         const end = new Date().getTime();
         console.log(end - start);
         this.imageText = response.data;
@@ -109,6 +115,8 @@ export class HomePage {
       }
     }).catch(error => {
       this.presentAlert(error.error);
+    }).finally(() => {
+      this.loadingController.dismiss();
     });
   }
 
