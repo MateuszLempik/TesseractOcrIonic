@@ -8,6 +8,6 @@ This app has been created using ionic cordova technology
 - coping recognized text to the smartphone clipboard
 - 3 recognition languages available: Polish, German and English
 
-### See the screen shots and app presentation 
+### See the app screen shots
 
 [Link to gallerry](https://github.com/MateuszLempik/TesseractOcrIonic/tree/master/resources/gallery)
