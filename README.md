@@ -1,30 +1,11 @@
-## Welcome to Recognition App Presentation
+## Welcome to Ionic Text Recognition App
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This app has been created using ionic cordova technology
 
-### Markdown
+### Functionalities
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- taking a picture with a smartphone camera or choosing a picture from smartphone gallery and then text on image recognition using Tesseract.js library
+- coping recognized text to the smartphone clipboard
 
 ### Jekyll Themes
 
