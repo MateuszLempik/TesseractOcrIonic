@@ -45,7 +45,7 @@
     "ngx-progressbar": "^2.1.1",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.4.0",
-    "tesseract.js": "^1.0.14",
+    "tesseract.js": "^1.0.19",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {
