@@ -25,6 +25,7 @@ Using Node.js incl. [npm express library](https://www.npmjs.com/package/express)
 - Ionic
 
 ```js
+  recognizeImage() {
     this.http.setDataSerializer("json");
 
     this.loadingController.create({
