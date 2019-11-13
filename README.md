@@ -16,11 +16,37 @@ This app has been created using ionic cordova technology
 
 ### Implementation
 
-- Node.js
+Using Ionic client to take a picure and send it to Node.js server which is hosted on cloud application platform [Heroku](https://www.heroku.com/)
 
 Using Node.js incl. [npm express library](https://www.npmjs.com/package/express) to get image data needed for [Tesseract.js](https://tesseract.projectnaptha.com/)
 
 #### Recognition process
+
+- Ionic
+
+```js
+    this.http.setDataSerializer("json");
+
+    this.loadingController.create({
+      message: 'Please wait...'
+    }).then(loading => loading.present());
+
+    this.http.post('https://polar-harbor-38401.herokuapp.com/', {imgDat: this.img, language: this.lang
+    },{'Content-Type': 'application/json'}).then(response => {
+      if(response.data){
+        this.loadingController.dismiss();
+        this.imageText = response.data;
+        this.checkCopyButton = true;
+      }
+    }).catch(error => {
+      this.presentAlert(error.error);
+    }).finally(() => {
+      this.loadingController.dismiss();
+    });
+  }
+```
+
+- Node.js
 
 ```js
   .post('/', (req, res) => {
