@@ -20,6 +20,6 @@ This app has been created using ionic cordova technology
 
 Using Node.js incl. [npm express library](https://www.npmjs.com/package/express) to get image data needed for [Tesseract.js](https://tesseract.projectnaptha.com/)
 
-####Recognition process
+#### Recognition process
 
 
