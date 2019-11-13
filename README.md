@@ -43,6 +43,5 @@ Using Node.js incl. [npm express library](https://www.npmjs.com/package/express)
       console.error(error)
     });
   })
-}
 ```
 
