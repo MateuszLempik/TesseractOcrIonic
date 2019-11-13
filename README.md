@@ -22,4 +22,27 @@ Using Node.js incl. [npm express library](https://www.npmjs.com/package/express)
 
 #### Recognition process
 
+```js
+  .post('/', (req, res) => {
+    const data = req.body.imgDat;
+    const language = req.body.language;
+
+    console.log(req.body.language);
+    console.log("Recognizing image...")
+
+    const buffer = Buffer.from(data, 'base64');
+    
+    Tesseract.recognize(buffer, {
+      lang: language
+    }).progress(progress => {
+      console.log(progress)
+    })
+    .then(result => {
+      res.send(result.text)
+    }).catch(error => {
+      console.error(error)
+    });
+  })
+}
+```
 
