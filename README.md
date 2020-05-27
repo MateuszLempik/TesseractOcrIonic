@@ -4,7 +4,8 @@ This app has been created using ionic cordova technology
 
 ### Functionalities
 
-- taking a picture with a smartphone camera or choosing a picture from smartphone gallery and then text on image recognition using Tesseract.js library,
+- taking a picture with a smartphone camera or choosing a picture from smartphone gallery, 
+- image recognition using Tesseract.js library with loaded image,
 - coping recognized text to the smartphone clipboard,
 - 3 recognition languages available: Polish, German and English
 
