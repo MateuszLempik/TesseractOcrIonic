@@ -13,8 +13,6 @@ This app has been created using ionic cordova technology
 
 ![Image1](https://raw.githubusercontent.com/MateuszLempik/TesseractOcrIonic/master/gallery/picture3.png)
 
-[Link to gallerry](https://github.com/MateuszLempik/TesseractOcrIonic/tree/master/gallery)
-
 [Link to presentation video](https://github.com/MateuszLempik/TesseractOcrIonic/blob/master/gallery/2019-11-13_10h27_00.mp4)
 
 ### Implementation
