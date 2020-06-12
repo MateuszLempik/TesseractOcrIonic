@@ -1,4 +1,4 @@
-## Welcome to Ionic Text Recognition App
+## Ionic Text Recognition App
 
 This app has been created using ionic cordova technology
 
