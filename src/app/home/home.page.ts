@@ -102,8 +102,6 @@ export class HomePage {
     this.loadingController.create({
       message: 'Please wait...'
     }).then(loading => loading.present());
-    
-    console.log(this.img)
 
     this.http.post('https://polar-harbor-38401.herokuapp.com/', {imgDat: this.img, language: this.lang
     },{'Content-Type': 'application/json'}).then(response => {
